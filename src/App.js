@@ -2,25 +2,21 @@ import "./App.css";
 import { useState } from "react";
 
 export default function App() {
-  const [like, setLike] = useState(0);
+  const [count, setCount] = useState(() => {
+    return 0;
+  });
+
+  function increament() {
+    setCount((prevCount) => prevCount + 1);
+  }
+
   return (
     <div className="App">
-      <button onClick={() => setLike(like - like)} className="reset">
+      <button onClick={() => setCount(count - count)} className="reset">
         Reset
       </button>
-      <Btn></Btn>
-      <Btn></Btn>
-      <Btn></Btn>
-    </div>
-  );
-}
-
-function Btn() {
-  const [like, setLike] = useState(0);
-  return (
-    <div>
-      <div className="new">{like}</div>
-      <button onClick={() => setLike(like + 1)} className="main">
+      <div className="new">{count}</div>
+      <button onClick={increament} className="main">
         Click
       </button>
     </div>
