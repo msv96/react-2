@@ -1,24 +1,27 @@
 import "./App.css";
-import { useState } from "react";
+import Card from "./Circle";
 
 export default function App() {
-  const [count, setCount] = useState(() => {
-    return 0;
-  });
+  const colors = [
+    { id: 1, value: "red", count: 0 },
+    { id: 2, value: "green", count: 0 },
+    { id: 3, value: "blue", count: 0 },
+  ];
 
-  function increament() {
-    setCount((prevCount) => prevCount + 1);
-  }
+  const resetHandle = () => {
+    window.location.reload();
+  };
 
   return (
     <div className="App">
-      <button onClick={() => setCount(count - count)} className="reset">
+      <button onClick={resetHandle} className="reset">
         Reset
       </button>
-      <div className="new">{count}</div>
-      <button onClick={increament} className="main">
-        Click
-      </button>
+      <div className="new">
+        {colors.map((color) => (
+          <Card key={color.id} color={color}></Card>
+        ))}
+      </div>
     </div>
   );
 }
