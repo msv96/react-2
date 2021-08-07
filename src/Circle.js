@@ -1,19 +1,13 @@
-import { useState } from "react";
 import "./Circle.css";
 
 export default function Card(props) {
-  const [count, setCount] = useState(props.color.count);
-  const { value } = props.color;
 
-  function increament() {
-    setCount((prevCount) => prevCount + 1);
-  }
   return (
     <div className="main">
-      <h2>{count}</h2>
+      <h3>{props.data.count}</h3>
       <button
-        style={{ backgroundColor: value }}
-        onClick={increament}
+        style={{backgroundColor:props.data.value}}
+        onClick={() => {props.handleCount(props.data.id)}}
         className="bttn"
       >
         Click
